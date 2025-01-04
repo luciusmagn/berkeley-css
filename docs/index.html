@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Design System Sample</title>
+   <link rel="stylesheet" href="berkeley.css">
+</head>
+<body>
+   <header>
+       <nav>
+           <ul>
+               <li><a href="#">Home</a></li>
+               <li><a href="#">About</a></li>
+               <li><a href="#">Contact</a></li>
+           </ul>
+       </nav>
+   </header>
+
+   <main>
+       <h1>Main Heading</h1>
+       <h2>Subheading</h2>
+       <h3>Smaller heading</h3>
+
+       <p>Regular paragraph with <strong>bold</strong> and <em>italic</em> text. Here's a <a href="#">link</a>.</p>
+
+       <blockquote>
+           This is a blockquote. It might contain longer passages.
+       </blockquote>
+
+       <ul>
+           <li>Unordered list item</li>
+           <li>Another item</li>
+       </ul>
+
+       <ol>
+           <li>Ordered list item</li>
+           <li>Second item</li>
+       </ol>
+
+       <form>
+           <label>Text input:
+               <input type="text">
+           </label>
+           <button type="submit">Button</button>
+       </form>
+
+       <pre><code>// Code block
+function hello() {
+   return "world";
+}</code></pre>
+
+       <table>
+           <tr>
+               <th>Header 1</th>
+               <th>Header 2</th>
+           </tr>
+           <tr>
+               <td>Data 1</td>
+               <td>Data 2</td>
+           </tr>
+       </table>
+   </main>
+
+   <footer>
+       <small>Footer text</small>
+   </footer>
+   <form class="samples">
+       <!-- Text inputs -->
+       <div class="group">
+           <input type="text" placeholder="Regular input">
+           <input type="text" disabled value="Disabled input">
+           <input type="text" readonly value="Readonly input">
+           <input type="password" placeholder="Password">
+           <input type="email" placeholder="Email">
+           <input type="search" placeholder="Search">
+           <input type="tel" placeholder="Phone number">
+           <input type="url" placeholder="URL">
+           <input type="number" placeholder="Number">
+       </div>
+
+       <!-- Textareas -->
+       <div class="group">
+           <textarea placeholder="Regular textarea"></textarea>
+           <textarea disabled>Disabled textarea</textarea>
+       </div>
+
+       <!-- Select menus -->
+       <div class="group">
+           <select>
+               <option>Select option</option>
+               <optgroup label="Group 1">
+                   <option>Option 1</option>
+                   <option>Option 2</option>
+               </optgroup>
+           </select>
+
+           <select multiple>
+               <option>Multiple select</option>
+               <option>Option 2</option>
+               <option>Option 3</option>
+           </select>
+       </div>
+
+       <!-- Checkboxes & Radios -->
+       <div class="group">
+           <label>
+               <input type="checkbox">
+               Regular checkbox
+           </label>
+           <label>
+               <input type="checkbox" checked>
+               Checked checkbox
+           </label>
+           <label>
+               <input type="radio" name="radio">
+               Radio option 1
+           </label>
+           <label>
+               <input type="radio" name="radio">
+               Radio option 2
+           </label>
+       </div>
+
+       <!-- Range & Progress -->
+       <div class="group">
+           <input type="range">
+           <progress value="50" max="100"></progress>
+           <meter value="0.5" min="0" max="1"></meter>
+       </div>
+
+       <!-- Date & Time -->
+       <div class="group">
+           <input type="date">
+           <input type="time">
+           <input type="datetime-local">
+           <input type="month">
+           <input type="week">
+       </div>
+
+       <!-- Color & File -->
+       <div class="group">
+           <input type="color">
+           <input type="file">
+       </div>
+
+       <!-- Buttons -->
+       <div class="group">
+           <button type="button">Regular Button</button>
+           <button type="submit">Submit Button</button>
+           <button type="reset">Reset Button</button>
+           <button disabled>Disabled Button</button>
+           <button class="primary">Primary Button</button>
+           <button class="secondary">Secondary Button</button>
+           <button class="danger">Danger Button</button>
+           <button class="small">Small Button</button>
+           <button class="large">Large Button</button>
+           <input type="button" value="Input Button">
+           <input type="submit" value="Input Submit">
+           <a href="#" class="button">Link Button</a>
+       </div>
+
+       <!-- Fieldset -->
+       <fieldset>
+           <legend>Grouped Form Elements</legend>
+           <label>
+               Username:
+               <input type="text">
+           </label>
+           <label>
+               Password:
+               <input type="password">
+           </label>
+       </fieldset>
+   </form>
+   <!-- Inline text elements -->
+   <abbr title="Abbreviation">abbr</abbr>
+   <mark>highlighted text</mark>
+   <p>there is a <sub>subscript</sub>here</p>
+   <p>anda a <sup>superscript</sup> there</p>
+   <kbd>keyboard input</kbd>
+   <time datetime="2023-11-22">time element</time>
+
+   <!-- Lists -->
+   <dl>
+       <dt>Definition term</dt>
+       <dd>Definition description</dd>
+   </dl>
+
+   <!-- Media -->
+   <figure>
+       <img src="..." alt="...">
+       <figcaption>Image caption</figcaption>
+   </figure>
+   <!--<audio controls src="..."></audio>
+   <video controls src="..."></video>-->
+
+   <!-- Interactive -->
+   <details>
+       <summary>Expandable section</summary>
+       Content here
+   </details>
+
+   <!-- Tables -->
+   <table>
+       <caption>Table caption</caption>
+       <thead>...</thead>
+       <tbody>...</tbody>
+       <tfoot>...</tfoot>
+   </table>
+</body>
+</html>

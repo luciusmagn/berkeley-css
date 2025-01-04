@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Account Settings</title>
+   <link rel="stylesheet" href="berkeley.css">
+</head>
+<body>
+   <main class="container stack">
+       <h1>Settings</h1>
+
+       <form class="stack">
+           <fieldset>
+               <legend>Profile</legend>
+               <div class="stack">
+                   <label>
+                       Display Name
+                       <input type="text" value="JohnDoe">
+                   </label>
+                   <label>
+                       Avatar
+                       <input type="file" accept="image/*">
+                   </label>
+               </div>
+           </fieldset>
+
+           <fieldset>
+               <legend>Preferences</legend>
+               <div class="stack">
+                   <label>
+                       <input type="checkbox" checked>
+                       Email notifications
+                   </label>
+                   <label>
+                       Theme
+                       <select>
+                           <option>Light</option>
+                           <option>Dark</option>
+                           <option>System</option>
+                       </select>
+                   </label>
+                   <label>
+                       Language
+                       <select>
+                           <option>English</option>
+                           <option>Finnish</option>
+                           <option>Czech</option>
+                       </select>
+                   </label>
+               </div>
+           </fieldset>
+
+           <fieldset>
+               <legend>Danger Zone</legend>
+               <div>
+                   <button class="danger">Delete Account</button>
+               </div>
+           </fieldset>
+
+           <div>
+               <button type="submit" class="primary">Save Changes</button>
+               <button type="reset">Reset</button>
+           </div>
+       </form>
+   </main>
+</body>
+</html>

@@ -1,0 +1,460 @@
+/* Variables and Fonts */
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('../assets/fonts/BerkeleyMonoVariable-Regular.woff2') format('woff2');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Berkeley Mono';
+  src: url('../assets/fonts/BerkeleyMonoVariable-Italic.woff2') format('woff2');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TT Fors';
+  src: url('../assets/fonts/TT_Fors_Variable.woff2') format('woff2');
+}
+
+:root {
+   --scale: 1.2;
+   --base: 1rem;
+   --shadow: 3px 3px #bfb89c;
+   --bg-primary: #fff8dc;
+   --bg-secondary: #fffff3;
+   --bg-tertiary: #fffaec;
+   --bg-page: #efe8cc;
+}
+
+/* Base Styles */
+* {
+   font-family: 'TT Fors';
+   font-size: 1rem;
+   border-radius: 0;
+   border-size: 1px;
+   box-sizing: border-box;
+}
+
+html {
+   background-color: var(--bg-page);
+}
+
+body {
+   display: flex;
+   flex-direction: column;
+}
+
+/* Typography */
+h1 { font-size: calc(var(--base) * pow(var(--scale), 3)); }
+h2 { font-size: calc(var(--base) * pow(var(--scale), 2)); }
+h3 { font-size: calc(var(--base) * pow(var(--scale), 1)); }
+h4 { font-size: var(--base); }
+h5 { font-size: calc(var(--base) * pow(var(--scale), -1)); }
+h6 { font-size: calc(var(--base) * pow(var(--scale), -2)); }
+
+pre, code {
+   font-family: 'Berkeley Mono';
+   font-weight: 120;
+}
+
+/* Layout Components */
+.container {
+   width: min(100% - 2rem, 70ch);
+   margin-inline: auto;
+   padding: 1rem;
+   border: solid 1px black;
+   box-shadow: var(--shadow);
+   background-color: var(--bg-primary);
+}
+
+.grid {
+   display: grid;
+   gap: 2rem;
+   grid-template-columns: repeat(
+       auto-fit,
+       minmax(min(100%, 35ch), 1fr)
+   );
+}
+
+.stack {
+   display: flex;
+   flex-direction: column;
+   gap: 1.5rem;
+}
+
+/* Forms */
+form, .group {
+   display: flex;
+   flex-direction: column;
+}
+
+label {
+   display: flex;
+   align-items: center;
+   gap: 0.5rem;
+}
+
+/* Input Elements */
+button,
+input[type="button"],
+input[type="submit"],
+.button {
+   padding: 1rem 2rem;
+   border: solid 1px black;
+   margin: 0.3rem;
+   background: var(--bg-secondary);
+   font: inherit;
+   color: inherit;
+   cursor: pointer;
+   outline: none;
+   text-decoration: none;
+   box-shadow: var(--shadow);
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -webkit-tap-highlight-color: transparent;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   width: fit-content;
+}
+
+/* Button States */
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="file"]::file-selector-button:hover,
+.button:hover {
+   background-color: black;
+   color: var(--bg-secondary);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="file"]::file-selector-button:active,
+.button:active {
+   background-color: var(--bg-secondary);
+   color: black;
+}
+
+/* Button Variants */
+.primary {
+   background-color: #33cc33;
+   color: var(--bg-secondary);
+}
+
+.danger {
+   background-color: #eb4d4b;
+   color: var(--bg-secondary);
+}
+
+.secondary {
+   background-color: #0055ff;
+   color: var(--bg-secondary);
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="month"],
+input[type="week"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="color"],
+textarea,
+select {
+   margin: 0.3rem;
+   border: solid 1px black;
+   padding: 0.5rem 1rem;
+   background: var(--bg-secondary);
+   font: inherit;
+   color: inherit;
+   outline: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   box-shadow: inset 2px 2px #bfb89c;
+   width: fit-content;
+}
+
+input[type="color"] {
+   min-width: 5rem;
+}
+
+/* File Input */
+input[type="file"]::file-selector-button {
+   padding: 1rem;
+   border: solid 1px black;
+   margin: 0.3rem;
+   background: var(--bg-secondary);
+   font: inherit;
+   color: inherit;
+   cursor: pointer;
+   outline: none;
+   text-decoration: none;
+   box-shadow: var(--shadow);
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -webkit-tap-highlight-color: transparent;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+   appearance: none;
+   width: 1rem;
+   height: 1rem;
+   border: 1px solid black;
+   background: var(--bg-primary);
+   vertical-align: middle;
+   margin: 0;
+}
+
+input[type="checkbox"]:checked {
+   position: relative;
+}
+
+input[type="checkbox"]:checked::before {
+   content: "";
+   position: absolute;
+   width: 0.5rem;
+   height: 0.5rem;
+   background: black;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+/* Toggle Switch */
+.switch {
+   position: relative;
+   display: inline-flex;
+   width: 3rem;
+   height: 1.5rem;
+}
+
+.switch input {
+   opacity: 0;
+   width: 0;
+   height: 0;
+}
+
+.switch-slider {
+   position: absolute;
+   inset: 0;
+   background: var(--bg-primary);
+   border: 1px solid black;
+   font-family: 'Berkeley Mono';
+   display: flex;
+   cursor: pointer;
+   overflow: hidden;
+}
+
+.switch-slider::before {
+   content: "0";
+   position: absolute;
+   left: 25%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+   z-index: 1;
+}
+
+.switch-slider::after {
+   content: "1";
+   position: absolute;
+   right: 25%;
+   top: 50%;
+   transform: translate(50%, -50%);
+   color: black;
+   z-index: 1;
+}
+
+.switch-slider div {
+   position: absolute;
+   width: 50%;
+   height: 100%;
+   background: black;
+   left: 0;
+}
+
+.switch input:checked + .switch-slider div {
+   left: 50%;
+}
+
+.switch input:checked + .switch-slider::before {
+   color: black;
+}
+
+.switch input:checked + .switch-slider::after {
+   color: white;
+}
+
+/* Select Options */
+select[multiple] option:checked,
+select[multiple] option:active,
+select[multiple] option:selected {
+   background: black;
+   color: white;
+}
+
+/* Fieldset */
+fieldset {
+   border: solid 1px black;
+}
+
+fieldset legend {
+   text-align: center;
+   width: auto;
+   margin-inline: auto;
+   border: solid 1px black;
+   background-color: var(--bg-secondary);
+   box-shadow: var(--shadow);
+}
+
+/* Text Elements */
+blockquote {
+   font-size: 0.9rem;
+   border-left: solid 1px black;
+   padding: 1rem 0.1rem 1rem 1rem;
+}
+
+pre {
+   border: solid 1px black;
+   background-color: var(--bg-tertiary);
+   padding: 0.5rem;
+   box-shadow: var(--shadow);
+}
+
+kbd {
+   font-family: 'Berkeley Mono';
+   background-color: var(--bg-secondary);
+   padding: 0.1rem 0.3rem;
+   border: 1px solid black;
+   box-shadow: 2px 2px #bfb89c;
+   font-size: 0.9em;
+}
+
+mark {
+   background-color: #ffffa0;
+   padding: 0 0.2rem;
+}
+
+time {
+   font-family: 'Berkeley Mono';
+   font-size: 0.9rem;
+}
+
+/* Text Styling */
+em, i {
+   font-style: italic;
+}
+
+sub, sup {
+   font-size: 0.75rem;
+   line-height: 0;
+   position: relative;
+}
+
+sup { top: -0.15rem; }
+sub { bottom: -0.15em; }
+
+abbr {
+   text-decoration: underline dotted;
+   cursor: help;
+}
+
+/* Navigation */
+nav {
+   background: var(--bg-secondary);
+   border: 1px solid black;
+   box-shadow: var(--shadow);
+}
+
+nav ul {
+   display: flex;
+   gap: 1rem;
+   padding: 1rem;
+   margin: 0;
+   list-style: none;
+}
+
+nav a {
+   text-decoration: none;
+   color: inherit;
+}
+
+nav a:hover {
+   text-decoration: underline;
+}
+
+/* Cards */
+.card {
+   border: 1px solid black;
+   background: var(--bg-secondary);
+   box-shadow: var(--shadow);
+   padding: 1rem;
+}
+
+.card-header {
+   border-bottom: 1px solid black;
+   padding-bottom: 0.5rem;
+   margin-bottom: 1rem;
+}
+
+/* Modal */
+.modal-backdrop {
+   position: fixed;
+   inset: 0;
+   background: rgba(0, 0, 0, 0.5);
+   display: none;
+}
+
+.modal-backdrop[data-open] {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.modal {
+   background: var(--bg-primary);
+   border: 1px solid black;
+   box-shadow: var(--shadow);
+   max-width: min(calc(100% - 2rem), 70ch);
+   min-width: 500px;
+   position: relative;
+   padding: 0;
+}
+
+.modal-title {
+   padding-left: 1rem;
+   background: var(--bg-secondary);
+   border-bottom: 1px solid black;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.modal-content {
+   padding: 1rem;
+}
+
+.modal-close {
+   font-family: 'Berkeley Mono';
+   border: none;
+   background: none;
+   box-shadow: none;
+   border-left: solid 1px black;
+   padding: 0.2rem 0.5rem;
+   margin: 0;
+}
+
+/* States */
+*[disabled=""] {
+   opacity: 0.4;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Admin Dashboard</title>
+   <link rel="stylesheet" href="berkeley.css">
+</head>
+<body>
+   <main class="container stack">
+       <header class="grid" style="align-items: center">
+           <h2>Dashboard</h2>
+           <div style="justify-self: end">
+               <time>Last update: 2023-11-22 13:45</time>
+           </div>
+       </header>
+
+       <div class="grid">
+           <div class="stack" style="border: 1px solid black; padding: 1rem">
+               <h3>Users</h3>
+               <mark style="font-size: 2rem">1,234</mark>
+               <meter value="0.8" min="0" max="1"></meter>
+           </div>
+           <div class="stack" style="border: 1px solid black; padding: 1rem">
+               <h3>Revenue</h3>
+               <mark style="font-size: 2rem">$45.6k</mark>
+               <progress value="70" max="100"></progress>
+           </div>
+       </div>
+
+       <section class="stack">
+           <h3>Recent Activity</h3>
+           <div style="overflow-x: auto">
+               <table>
+                   <tr>
+                       <th>User</th>
+                       <th>Action</th>
+                       <th>Time</th>
+                   </tr>
+                   <tr>
+                       <td>john@example.com</td>
+                       <td>Login</td>
+                       <td><time>13:42</time></td>
+                   </tr>
+                   <tr>
+                       <td>mary@example.com</td>
+                       <td>Purchase</td>
+                       <td><time>13:37</time></td>
+                   </tr>
+               </table>
+           </div>
+       </section>
+   </main>
+</body>
+</html>

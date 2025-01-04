@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login/Register</title>
+  <link rel="stylesheet" href="berkeley.css">
+  <style>
+   .auth-tabs {
+       display: flex;
+       gap: 1rem;
+       position: relative;
+       padding: 0 1rem;
+   }
+
+   .auth-tabs::after {
+       content: "";
+       position: absolute;
+       left: 0;
+       right: 0;
+       top: 50%;
+       height: 1px;
+       background: black;
+       z-index: 0;
+   }
+
+   .auth-tab {
+       padding: 0.5rem 1rem;
+       border: 1px solid black;
+       background: #fff8dc;
+       cursor: pointer;
+       position: relative;
+       z-index: 1;
+       margin: 0;
+       box-shadow: 3px 3px #bfb89c;
+   }
+
+   .auth-tab[data-active] {
+       background: #fffff3;
+   }
+
+   .auth-panel {
+       display: none;
+       padding: 1rem;
+   }
+
+   .auth-panel[data-active] {
+       display: block;
+   }
+
+   .divider {
+       display: flex;
+       align-items: center;
+       gap: 1rem;
+       margin: 1rem 0;
+   }
+
+   .divider::before,
+   .divider::after {
+       content: "";
+       flex: 1;
+       height: 1px;
+       background: black;
+   }
+
+   .social-buttons {
+       display: flex;
+       flex-direction: column;
+       gap: 0.5rem;
+   }
+
+   .social-button {
+       width: 100%;
+       justify-content: center;
+       gap: 0.5rem;
+   }
+  </style>
+</head>
+<body>
+  <main class="container stack" style="max-width: 400px; margin-top: 4rem;">
+      <div class="auth-tabs">
+          <button class="auth-tab" data-active
+                  onclick="switchTab('login')">Login</button>
+          <button class="auth-tab"
+                  onclick="switchTab('register')">Register</button>
+      </div>
+
+      <div class="auth-panel" data-active id="login-panel">
+          <div class="social-buttons">
+              <button class="social-button">
+                  <img src="google.png" width="20" height="20" alt="">
+                  Continue with Google
+              </button>
+              <button class="social-button">
+                  <img src="github.png" width="20" height="20" alt="">
+                  Continue with GitHub
+              </button>
+              <button class="social-button">
+                  <img src="x.png" width="20" height="20" alt="">
+                  Continue with X
+              </button>
+          </div>
+
+          <div class="divider">or</div>
+
+          <form class="stack">
+              <label>
+                  Email
+                  <input type="email" required>
+              </label>
+              <label>
+                  Password
+                  <input type="password" required>
+              </label>
+              <label>
+                  <input type="checkbox">
+                  Remember me
+              </label>
+              <button type="submit" class="primary">Login</button>
+          </form>
+      </div>
+
+      <div class="auth-panel" id="register-panel">
+          <form class="stack">
+              <label>
+                  Email
+                  <input type="email" required>
+              </label>
+              <label>
+                  Password
+                  <input type="password" required>
+              </label>
+              <label>
+                  Confirm Password
+                  <input type="password" required>
+              </label>
+              <label>
+                  <input type="checkbox" required>
+                  I agree to terms
+              </label>
+              <button type="submit" class="primary">Register</button>
+          </form>
+      </div>
+  </main>
+
+  <script>
+   function switchTab(tab) {
+       document.querySelectorAll('.auth-tab').forEach(t =>
+           t.removeAttribute('data-active'));
+       document.querySelectorAll('.auth-panel').forEach(p =>
+           p.removeAttribute('data-active'));
+
+       document.querySelector(`.auth-tab:nth-child(${tab === 'login' ? 1 : 2})`)
+               .setAttribute('data-active', '');
+       document.getElementById(`${tab}-panel`)
+               .setAttribute('data-active', '');
+   }
+  </script>
+</body>
+</html>
