@@ -1,0 +1,257 @@
+* Berkeley.css Framework
+A minimalist CSS framework inspired by Berkeley Graphics and classic typography.
+
+** Installation
+*** Required Files
+- ~berkeley.css~
+- Font files:
+ - BerkeleyMonoVariable-Regular.woff2
+ - BerkeleyMonoVariable-Italic.woff2
+ - TT_Fors_Variable.woff2
+
+*** Basic Setup
+#+begin_src html
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="berkeley.css">
+</head>
+<body>
+   <!-- Your content here -->
+</body>
+</html>
+#+end_src
+
+** Layout Components
+*** Container
+Centers content with readable width (70ch max)
+#+begin_src html
+<main class="container">
+   <!-- Content here -->
+</main>
+#+end_src
+
+*** Grid
+Responsive grid layout that adapts to container width
+#+begin_src html
+<div class="grid">
+   <div>Item 1</div>
+   <div>Item 2</div>
+</div>
+#+end_src
+
+*** Stack
+Vertical spacing between elements
+#+begin_src html
+<div class="stack">
+   <h1>Title</h1>
+   <p>Content</p>
+</div>
+#+end_src
+
+** Components
+*** Buttons
+**** Basic Button
+#+begin_src html
+<button>Click me</button>
+<a class="button" href="#">Link Button</a>
+#+end_src
+
+**** Variants
+- Primary: ~class="primary"~
+- Secondary: ~class="secondary"~
+- Danger: ~class="danger"~
+
+*** Forms
+**** Basic Input
+#+begin_src html
+<label>
+   Label Text
+   <input type="text">
+</label>
+#+end_src
+
+**** Checkbox
+#+begin_src html
+<label>
+   <input type="checkbox">
+   Checkbox Label
+</label>
+#+end_src
+
+**** Toggle Switch
+#+begin_src html
+<label class="switch">
+   <input type="checkbox">
+   <span class="switch-slider">
+       <div></div>
+   </span>
+</label>
+#+end_src
+
+**** Fieldset
+#+begin_src html
+<fieldset>
+   <legend>Group Title</legend>
+   <!-- Form elements -->
+</fieldset>
+#+end_src
+
+*** Navigation
+#+begin_src html
+<nav>
+   <ul>
+       <li><a href="#">Link 1</a></li>
+       <li><a href="#">Link 2</a></li>
+   </ul>
+</nav>
+#+end_src
+
+*** Cards
+#+begin_src html
+<div class="card">
+   <div class="card-header">
+       <h3>Card Title</h3>
+   </div>
+   <p>Card content</p>
+</div>
+#+end_src
+
+*** Modal
+#+begin_src html
+<div class="modal-backdrop" id="my-modal">
+   <div class="modal">
+       <div class="modal-title">
+           <h3>Modal Title</h3>
+           <button class="modal-close"
+                   onclick="this.closest('.modal-backdrop').removeAttribute('data-open')">
+               ×
+           </button>
+       </div>
+       <div class="modal-content">
+           <!-- Modal content -->
+       </div>
+   </div>
+</div>
+
+<!-- Trigger button -->
+<button onclick="document.getElementById('my-modal').setAttribute('data-open', '')">
+   Open Modal
+</button>
+#+end_src
+** Hyperscript Integration
+*** Modal Implementation
+**** Basic Modal with Hyperscript
+#+begin_src html
+<div class="modal-backdrop"
+    _="on click if target is me then remove @data-open">
+   <div class="modal">
+       <div class="modal-title">
+           <h3>Modal Title</h3>
+           <button class="modal-close"
+                   _="on click remove @data-open from closest '.modal-backdrop'">
+               ×
+           </button>
+       </div>
+       <div class="modal-content">
+           <!-- Modal content -->
+       </div>
+   </div>
+</div>
+
+<!-- Trigger button -->
+<button _="on click add @data-open to #my-modal">
+   Open Modal
+</button>
+#+end_src
+
+**** With Keyboard Support
+#+begin_src html
+<div class="modal-backdrop"
+    _="on click if target is me then remove @data-open
+       on keyup[key is 'Escape'] remove @data-open
+       on receive open add @data-open then focus(.modal)
+       on attribute change remove @data-open send close">
+   <div class="modal"
+        tabindex="-1"
+        _="on receive close remove @data-open from closest '.modal-backdrop'">
+       <!-- Modal content -->
+   </div>
+</div>
+
+<!-- Trigger -->
+<button _="on click send open to closest '.modal-backdrop'">
+   Open Modal
+</button>
+#+end_src
+
+**** With Focus Trap
+#+begin_src html
+<div class="modal-backdrop"
+    _="on click if target is me then remove @data-open
+       on keyup[key is 'Escape'] remove @data-open
+       on receive open(returnTo)
+         add @data-open
+         store returnTo in me
+         focus(.modal)
+       on attribute change remove @data-open
+         send close
+         focus stored returnTo">
+   <div class="modal"
+        tabindex="-1"
+        _="on keydown[key is 'Tab']
+             if event.shiftKey
+               then focus last focusable in me
+               else focus first focusable in me
+           end
+           on receive close
+             remove @data-open from closest '.modal-backdrop'">
+       <!-- Modal content -->
+   </div>
+</div>
+
+<!-- Trigger -->
+<button _="on click send open(me) to #my-modal">
+   Open Modal
+</button>
+#+end_src
+
+*** Usage Notes
+- Hyperscript provides more accessible modal behavior
+- Focus management is handled automatically
+- Keyboard navigation works out of the box
+- No JavaScript files needed beyond Hyperscript itself
+** Typography
+*** Headings
+- Uses modular scale (~--scale: 1.2~)
+- h1 through h6 automatically scaled
+
+*** Text Elements
+- ~<kbd>~ for keyboard input
+- ~<mark>~ for highlighted text
+- ~<time>~ for timestamps
+- ~<abbr>~ for abbreviations
+- ~<blockquote>~ for quotes
+- ~<code>~ and ~<pre>~ for code blocks
+
+** Variables
+*** Colors
+- ~--bg-primary~: Main background
+- ~--bg-secondary~: Component background
+- ~--bg-tertiary~: Code background
+- ~--bg-page~: Page background
+
+*** Typography
+- ~--scale~: Modular scale ratio
+- ~--base~: Base font size
+
+*** Layout
+- ~--shadow~: Default shadow offset
+
+** Browser Support
+- Modern browsers only (no IE support)
+- Uses modern CSS features:
+ - CSS Grid
+ - CSS Variables
+ - ~pow()~ function
+ - Modern selectors
